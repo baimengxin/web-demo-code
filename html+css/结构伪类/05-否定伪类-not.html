@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*  not(x)表示除x以外的元素  */
+        /* x表示一个简单选择器 */
+        /* 元素选择器、通用选择器、属性选择器、类选择器、id选择器、伪类（除否定伪类） */
+        .box :not(.item) {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+       <div>没有item类的div元素</div>
+        <div class="item">有item类的div元素1</div>
+        <div class="item">有item类的div元素2</div>
+        <div class="item">有item类的div元素3</div>
+        <div class="item">有item类的div元素4</div>
+        <div class="item">有item类的div元素5</div>
+        <div class="item">有item类的div元素6</div>
+        <div class="item">有item类的div元素7</div>
+        <div class="item">有item类的div元素8</div>
+        <span>span元素</span>
+    </div>
+</body>
+</html>

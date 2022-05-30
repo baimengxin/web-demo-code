@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            margin-bottom: 20px;
+        }
+        /* first-child 选中元素的第一个 */
+        /* .box div:first-child{
+            color: red;
+        } */
+
+        /* 默认选中第一个 */
+        /* .box :first-child{
+            color: red;
+        } */
+
+        /* 最后一个元素 */
+        /* .box :last-child{
+            color: green;
+        } */
+
+        /* only-child 是父元素中唯一的元素 */
+        .box div:only-child {
+            color: red;
+        }
+
+        .box :only-of-type{
+            color: red;
+        }
+
+        /* 这个是设置给 html标签 即根元素 */
+        :root{
+            font-size: 20px;
+        }
+
+        /* :empty代表里面完全空白的元素 */
+        :empty {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>span元素</span>
+        <div class="item">div元素1</div>
+        <div class="item">div元素2</div>
+        <div class="item">div元素3</div>
+        <div class="item">div元素4</div>
+        <div class="item">div元素5</div>
+        <div class="item">div元素6</div>
+    </div>
+
+    <div class="box">
+        <div>div元素</div>
+        <span>span元素</span>
+    </div>
+
+    <!-- 空格也不算完全空白 -->
+    <div class="box">
+       
+    </div>
+
+    <div class="box">123</div>
+
+    <!-- 完全空白的元素 -->
+    <div class="box"></div>
+</body>
+</html>
