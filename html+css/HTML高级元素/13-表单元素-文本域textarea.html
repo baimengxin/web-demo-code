@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            /* both 默认属性，可拉伸 */
+            /* resize: both; */
+
+            /* none 不可拉伸，固定宽高，内容超出部分会出现滚动条 */
+            /* resize: none; */
+
+            /* horizontal 横向拉伸 */
+            /* resize: horizontal; */
+
+            /* vertical 纵向拉伸 */
+            resize: vertical;
+
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="info">
+            <textarea name="info" id="info" cols="30" rows="10">文本框</textarea>
+        </label>
+
+        <button type="submit">提交按钮</button>
+    </form>
+</body>
+</html>

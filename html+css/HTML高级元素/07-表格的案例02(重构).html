@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            text-align: center;
+
+            /* 单元格之间的缝隙为 0 */
+            border-collapse: collapse;
+        }
+
+        table thead tr:nth-child(1) {
+            color: red;
+            font-weight: 700;
+        }
+
+        table th,td {
+            border: 1px solid #666;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <!-- 标题标签 -->
+        <caption>热门书籍</caption>
+
+        <!-- 头部 -->
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>书名</th>
+                <th>价格</th>
+                <th>出售本数</th>
+            </tr>
+        </thead>
+
+        <!-- 内容 -->
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>仙逆</td>
+                <td>100</td>
+                <td>10</td>
+            </tr>
+    
+            <tr>
+                <td>2</td>
+                <td>求魔</td>
+                <td>50</td>
+                <td>5</td>
+            </tr>
+    
+            <tr>
+                <td>3</td>
+                <td>飘邈之旅</td>
+                <td>70</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>凡人修仙传</td>
+                <td>80</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+
+        <!-- 尾部 -->
+        <tfoot>
+            <tr>
+                <td>其他</td>
+                <td>其他</td>
+                <td>其他</td>
+                <td>其他</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
