@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 500px;
+            background-color: green;
+            position: relative;
+        }
+
+        .box .content {
+
+            /* height: 200px; */
+            background-color: pink;
+
+            position: absolute;
+
+            /* 父元素的宽度 = 子元素的宽度 + left + right + margin-left + margin-right */
+            /* 当宽度为 auto 时， left: 0，right: 0，默认占满父元素的宽度 */
+            /* 当前的计算公式是： 水平 800 = auto + 0 + 0 + 0 + 0 */
+            /* left: 0; */
+            /* right: 0; */
+            
+
+            /* 如果想实现水平居中，可以使用这种方法 */
+            /* 当前的计算公式是： 水平 800 = 300 + 0 + 0 + auto + auto */
+            /* width: 300px;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto; */
+
+            /* 垂直居中同理 */
+            /* height: 200px;
+            width: 200px;
+            top: 0;
+            bottom: 0;
+            margin-top: auto;
+            margin-bottom: auto; */
+
+            /* 水平垂直居中，不存在兼容性 */
+            width: 200px;
+            height: 200px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="content"></div>
+    </div>
+</body>
+</html>

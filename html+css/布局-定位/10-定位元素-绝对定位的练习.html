@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* 布局代码 */
+        .box {
+            width: 140px;
+            margin: 0 auto;
+        }
+
+        .box .top {
+            /* height: 140px; */
+
+            /* 当不给高度的时候，会多出点距离 */
+            background-color: green;
+            position: relative;
+        }
+
+        .box .top img {
+            /* 将多出来的距离去掉 */
+            vertical-align: top;
+            /* display: block; */
+
+
+        }
+
+        .box .top a {
+            position: absolute;
+
+            /* 让a标签跟父元素同宽高 */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background-image: url(../images/music-sprite-coverall-01.png);
+            background-position: 0 0;
+        }
+
+        .box .top .info {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 27px;
+            padding-left: 8px;
+            line-height: 27px;
+
+            
+            font-size: 12px;
+            color: #ccc;
+
+            background-image: url(../images/music-sprite-coverall-01.png);
+            background-position: 0 -537px;
+        }
+
+        .box .top .info .icon-music {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            width: 14px;
+            height: 11px;
+            background-image: url(../images//music-sprite-coverall-02.png);
+            background-position: 0 -24px;
+        }
+
+        .box .top .info .count {
+            margin-left: 4px;
+        }
+
+        .box .top .info .icon-play {
+            /* 实现垂直居中 */
+            position: absolute;
+            right: 10px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+
+            display: inline-block;
+            width: 16px;
+            height: 17px;
+
+            background-image: url(../images//music-sprite-coverall-02.png);
+            background-position: 0 0;
+        }
+
+        /* 底部的样式 */
+        .box .bottom {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .box .bottom:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            <img src="../images/imgs-01.jpg" alt="">
+            <a href="#" class="cover"></a>
+            <div class="info">
+                <i class="icon-music"></i>
+                <span class="count">64万</span>
+                <i class="icon-play"></i>
+            </div>
+        </div>
+        <a class="bottom">『欧美风』节奏感｜运动｜醒脑｜耳孕专用</a>
+    </div>
+</body>
+
+</html>

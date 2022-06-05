@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: green;
+            margin: 100px auto;
+
+            position: relative;
+        }
+
+        strong {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .content {
+            position: absolute;
+            background-color: orange;
+
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>这是box下的p元素</p>
+
+        <strong>这是绝对定位元素
+            <p>它可以随意设置宽高</p>
+        </strong>
+
+        <div class="content">
+            <p>宽高默认由内容决定</p>
+        </div>
+    </div>
+</body>
+</html>

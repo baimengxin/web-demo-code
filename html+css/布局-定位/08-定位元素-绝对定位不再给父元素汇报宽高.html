@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: red;
+        }
+
+        .box strong {
+            position: absolute;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <strong>
+            <span>绝对定位元素脱标后，不再给父元素汇报宽高数据</span>
+            <p>绝对定位内部依旧按照标准流进行排布</p>
+        </strong>
+    </div>
+</body>
+</html>

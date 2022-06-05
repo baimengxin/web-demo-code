@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: green;
+            margin: 100px auto;
+
+            position: relative;
+        }
+
+        .box .content{
+            width: 200px;
+            height: 300px;
+            background-color: pink;
+
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        strong{
+            /* 绝对定位会参照最邻近的祖先定位元素，当前是 content  */
+            position: absolute;
+            bottom: 0;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="content">
+            <p>我是box下的p元素</p>
+
+            <p>现在box是绝对定位</p>
+
+            <strong>现在是 content 下的绝对定位</strong>
+        </div>
+    </div>
+</body>
+</html>
