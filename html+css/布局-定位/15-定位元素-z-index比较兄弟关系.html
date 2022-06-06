@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+
+        }
+
+        .box1 {
+            background-color: green;
+        }
+
+        .box2 {
+            top: 20px;
+            left: 20px;
+            background-color: pink;
+
+            z-index: -1;
+        }
+
+        .box3 {
+            top: 40px;
+            left: 40px;
+            background-color: orange;
+        }
+
+        .info {
+            position: absolute;
+
+            /* 这里的值不管设置多大，都没办法使文字层叠在最上层，因为其他定位元素会优先跟 box2 兄弟比较 */
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="item box1">1</div>
+    <div class="container">
+        <div class="item box2">
+            <div class="info">哈哈哈</div>
+        </div>
+    </div>
+    <div class="item box3">3</div>
+</body>
+</html>
