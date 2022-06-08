@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 300px;
+            background-color: pink;
+        }
+
+        .box strong{
+            /* 当设置浮动时，span元素会被推出 */
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 规则四：浮动元素不能与行内级内容层叠，行内级内容将会被浮动元素推出 -->
+    <div class="box">
+        <span>我是span元素</span>
+        <strong>我是strong</strong>
+        <i>我是i元素</i>
+        <div>我是div元素</div>
+    </div>
+</body>
+</html>

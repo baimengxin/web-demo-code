@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            width: 1190px;
+            height: 1000px;
+            margin: 0 auto;
+
+            background-color: green;
+        }
+
+        .wrapper {
+            margin-right: -10px;
+        }
+
+        .item {
+            width: 290px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background-color: pink;
+            
+            /* 浮动 */
+            float: left;
+        }
+
+        .item.left {
+            height: 370px;
+        }
+
+        .item.right {
+            height: 180px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="wrapper">
+            <div class="item left"></div>
+            <div class="item left"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+
+            <!-- 这里开始的布局就有点问题了 -->
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item left"></div>
+            <div class="item left"></div>
+
+
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+            
+        </div>
+    </div>
+</body>
+</html>

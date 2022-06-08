@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            width: 1190px;
+            /* height: 1000px; */
+            margin: 0 auto;
+
+            background-color: green;
+        }
+
+        .wrapper {
+            margin-right: -10px;
+        }
+
+        .item {
+            width: 290px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background-color: pink;
+            
+            /* 浮动 */
+            float: left;
+        }
+
+        .item.left {
+            height: 370px;
+        }
+
+        .item.right {
+            height: 180px;
+        }
+
+        .other {
+            height: 100px;
+            background-color: red;
+        }
+
+        .line {
+            /* 使用 clear 属性会默认到浮动元素的最下面 */
+            clear: both;
+        }
+
+        /* 最终解决方案 */
+        .clear-fix::after {
+            content: '';
+            clear: both;
+            /* 这里需要设置成块级元素 */
+            display: block;
+
+            /* 想要更好的浏览器兼容 */
+            visibility: hidden;
+            height: 0;
+        }
+
+        .clear-fix {
+            /* 兼容 IE6/7 */
+            *zoom: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 因为 所有的后代 item 元素都是浮动的，脱离标准流 -->
+    <!-- 因此不会向父元素汇报高度，那么 content 元素就没有高度，所以会产生高度塌陷 -->
+    <div class="content">
+        <div class="wrapper clear-fix">
+            <div class="item left"></div>
+            <div class="item left"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+            <div class="item right"></div>
+
+            <div class="item left"></div>
+            <div class="item left"></div>
+            
+            <!-- 解决方案二 -->
+            <!-- <div class="line"></div> -->
+        </div>
+    </div>
+
+    <!-- content 没有高度，所以会在上面显示 -->
+    <div class="other"></div>
+
+    <!-- 解决高度塌陷的方法
+    
+        1. 给父元素设置高度，缺点是不灵活
+        2. 使用额外的元素设置 clear 属性给父元素高度 (缺点是产生多余的元素)
+        3. 使用css的伪元素解决，通过添加类名即可解决 (常用)
+    -->
+</body>
+</html>

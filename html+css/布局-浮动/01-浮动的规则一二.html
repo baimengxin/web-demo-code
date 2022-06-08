@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            background-color: orange;
+
+            /* 规则二：浮动元素不能超出包含块的左右边界 */
+            padding: 10px;
+        }
+
+        .item1, .item2 {
+            background-color: red;
+        }
+
+        .item1 {
+
+            /* 浮动会脱离标准流 */
+            float: left;
+            background-color: green;
+        }
+
+        .item2 {
+            float: right;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+    </div>
+</body>
+</html>

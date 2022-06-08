@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 1100px;
+            height: 500px;
+            margin: 0 auto;
+            background-color: yellowgreen;
+        }
+
+        .box {
+           
+           
+        }
+
+        .item {
+            /* width: 220px; */
+            width: 221px;
+            height: 168px;
+            float: left;
+            /* background-color: pink; */
+
+            border: 1px solid #000;
+            margin-right: -1px;
+            box-sizing: border-box;
+        }
+
+        .first {
+            width: 220px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        思路二：
+        1. 给所以item设置边框
+        2. 利用 margin 负值给重叠边框 2px 给弄成 1px 的样子
+        3. 使用 box-sizing: border-box;
+        4. 然后会出现 多出 1px 的问题，这个就只能给其中一个盒子减去 1px 
+    -->
+    <div class="content">
+        <div class="box">
+            <div class="item first">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+        </div>
+    </div>
+</body>
+</html>

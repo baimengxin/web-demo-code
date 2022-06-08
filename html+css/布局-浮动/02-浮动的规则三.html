@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: green;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .box1 {
+            margin-left: 10px;
+            float: left;
+            background-color: orange;
+        }
+
+        .box2, .box3 {
+            float: left;
+        }
+
+        .box4{
+            width: 200px;
+            height: 100px;
+            background-color: rebeccapurple;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 规则三：浮动元素之间不能层叠 -->
+    <div class="box">
+        <div class="item box1">1</div>
+        <div class="item box2">2</div>
+        <div class="item box3">3</div>
+        <div class="item box4">4</div>
+    </div>
+</body>
+</html>
