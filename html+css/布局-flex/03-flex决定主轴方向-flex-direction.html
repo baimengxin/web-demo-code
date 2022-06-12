@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            display: flex;
+
+            width: 300px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .box1 {
+            /* 设置主轴方向 - flex-direction */
+            /* 默认是 row 从左往右 */
+            flex-direction: row;
+        }
+
+        .box2 {
+            flex-direction: row-reverse;
+        }
+
+        .box3 {
+            height: 160px;
+            flex-direction: column;
+        }
+
+        .box4 {
+            height: 160px;
+            flex-direction: column-reverse;
+        }
+
+        .item {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>设置主轴方向 - flex-direction</h1>
+    <h2>row 默认方向，从左往右</h2>
+    <div class="box box1">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h2>row-reverse 主轴方向 从右往左</h2>
+    <div class="box box2">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h2>column 主轴方向 从上往下</h2>
+    <div class="box box3">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h2>column-reverse 主轴方向 从下往上</h2>
+    <div class="box box4">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

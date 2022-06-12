@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            background-color: pink;
+
+            display: flex;
+        }
+
+
+        .item {
+            width: 100px;
+            height: 100px;
+
+            /* 由于默认值是 1，是拉伸状态，设置为 0 就不会拉伸了 */
+            flex-shrink: 0;
+        }
+
+        .item1 {
+            flex-shrink: 1; 
+            min-width: 80px;
+        }
+
+        .item2 {   
+            flex-shrink: 1; 
+            min-width: 80px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>flex-shrink 决定了 flex items 如何收缩(缩小)</h2>
+    <h3>可以设置任意非负数字（正小数、正整数、0），默认值是 1</h3>
+    <h3> 当 flex items 在 main axis 方向上超过了 flex container 的 size，flex-shrink 属性才会有效</h3>
+
+    <h3 style="color: red;">注意：flex items 收缩后的最终 size 不能小于 min-width\min-height
+    </h3>
+   
+    <div class="box">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+        <div class="item item4">4</div>
+        <div class="item item5">5</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

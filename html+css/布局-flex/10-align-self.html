@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+
+            display: flex;
+            align-items: center;
+        }
+
+
+        .item {
+            width: 100px;
+            height: 100px;
+        }
+
+        .item1 {
+            
+        }
+
+        .item2 {
+            height: 200px;
+            /* align-self 可以覆盖 flex container 设置的 align-items */
+            align-self: flex-start;
+        }
+
+        .item3 {
+            height: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>align-self 可以覆盖 flex container 设置的 align-items</h2>
+   
+    <div class="box">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

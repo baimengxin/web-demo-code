@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+
+            display: flex;
+        }
+
+
+        .item {
+            width: 100px;
+            height: 100px;
+
+            /* 当给每个 item 设置就会平均分布 */
+            /* flex-grow: 1; */
+        }
+
+        .item1 {
+            
+        }
+
+        .item2 {   
+            flex-grow: 1; 
+
+        }
+
+        .item3 {
+            /* 数值越大，占比越大 */
+            
+            flex-grow: 2;
+            /* 当设置 宽度最大值时，flex-grow 的拉伸不能超过这个值 */
+            max-width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>flex-grow 决定了 flex items 如何扩展(拉伸/成长)</h2>
+    <h3>可以设置任意非负数字（正小数、正整数、0），默认值是 0</h3>
+    <h3>当 flex container 在 main axis 方向上有剩余 size 时，flex-grow 属性才会有效</h3>
+
+    <h3 style="color: red;">注意：flex items 扩展后的最终 size 不能超过 max-width\max-height</h3>
+   
+    <div class="box">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

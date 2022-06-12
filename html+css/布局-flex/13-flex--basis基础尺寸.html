@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            background-color: pink;
+
+            display: flex;
+        }
+
+
+        .item {
+            /* width: 100px; */
+
+            /* 基础尺寸 */
+            /* 当字体无法完全展示时,会自动拉伸到完整展示 */
+            flex-basis: 120px;
+            height: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h2>flex-basis 用来设置 flex items 在 main axis 方向上的 base size</h2>
+    <h3>auto（默认值）、具体的宽度数值（100p</h3>
+    
+    <h3 style="color: red;">决定 flex items 最终 base size 的因素，从优先级高到低</h3>
+    <ul>
+        <li>max-width\max-height\min-width\min-height</li>
+        <li>flex-basis</li>
+        <li>width\height</li>
+        <li>内容本身的 size</li>
+    </ul>
+   
+    <div class="box">
+        <div class="item item1">1</div>
+        <div class="item item2">2是 zhangsanlisiwangwu-abcdef</div>
+        <div class="item item3">3</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

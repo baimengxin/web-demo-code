@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            background-color: pink;
+
+            display: flex;
+        }
+
+
+        .item {
+            width: 100px;
+            height: 100px;
+
+            /* flex-grow | flex-shrink | flex-basis */
+
+            /* none: 0 0 auto */
+            /* flex: none; */
+
+            /* auto: 1 1 auto */
+            /* flex: auto; */
+
+            /* none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
+            flex: 1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h2>flex 是 flex-grow || flex-shrink || flex-basis 的简写,flex 属性可以指定1个，2个或3个值。</h2>
+
+    <h3>正式语法：none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]</h3>
+    <div class="box">
+        <div class="item item1">1</div>
+        <div class="item item2">2是 zhangsanlisiwangwu-abcdef</div>
+        <div class="item item3">3</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+
+            display: flex;
+
+            /* flex布局 默认情况下会把超出元素压缩进一行 */
+            /* 如果想要换行，可以使用 flex-wrap */
+
+            /* 默认属性：不换行 */
+            /* flex-wrap: nowrap; */
+
+            /* 换行 */
+            flex-wrap: wrap;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+        }
+
+        .box2 {
+            flex-wrap: wrap-reverse;
+        }
+    </style>
+</head>
+<body>
+    <h2>flex-wrap: wrap; 换行</h2>
+    <div class="box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h2>flex-wrap: wrap-reverse; 反向换行</h2>
+    <h3 style="color: red;">需要注意的是如果没有更改主轴方向，默认还是从左往右</h3>
+    <div class="box box2">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

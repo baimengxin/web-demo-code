@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 100px;
+            background-color: pink;
+
+            display: flex;
+
+            /* flex-start：默认属性 */
+            /* justify-content: flex-start; */
+
+            /* flex-end：让元素和 main end 对齐 */
+            /* justify-content: flex-end; */
+
+            /* center：居中对齐 */
+            /* justify-content: center; */
+
+            /* space-between：两端各方一个元素，其他多余的元素一定要空间等分 */
+            /* justify-content: space-between; */
+
+            /* space-around：两端也有间距，且两端的间距是 items 之间间距的一半 */
+            /* justify-content: space-around; */
+
+            /* space-evenly：items 之间的间距相等 */
+            justify-content: space-evenly;
+        }
+
+        .item {
+            width: 50px;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>justify-content 两端对齐方式，默认属性是 flex-start</h2>
+    <div class="box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

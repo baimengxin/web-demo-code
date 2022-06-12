@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 100px;
+            background-color: pink;
+
+            display: flex;
+
+            align-items: stretch;
+
+            /* center：居中对齐 */
+            /* align-items: center; */
+            
+            /* flex-start：与 cross start 对齐 */
+            /* align-items: flex-start; */
+
+            /* flex-end：与 cross end 对齐 */
+            /* align-items: flex-end; */
+            
+            /* baseline：基线对齐 */
+            /* align-items: baseline; */
+        }
+
+        .box2 {
+            align-items: center;
+        }
+
+        .box3 {
+            align-items: flex-start;
+        }
+
+        .box4 {
+            align-items: flex-end;
+        }
+
+        .box5 {
+            align-items: baseline;
+        }
+
+
+        .item {
+            width: 50px;
+            height: 50px;
+        }
+
+        .item3 {
+            /* 当高度为 auto 时，默认会自动拉伸至填充 flex container */
+            height: auto;
+        }
+
+        .item4 {
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>align-items 决定 flex-items 在 cross axis 上的对齐方式</h2>
+    <h3>align-items: stretch; 当高度为 auto 时，默认会自动拉伸至填充 flex container</h3>
+    <div class="box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item item3">3</div>
+    </div>
+
+    <h3>align-items: center; 居中对齐 (常用)</h3>
+    <div class="box box2">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>align-items: start; 与 cross start 对齐</h3>
+    <div class="box box3">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>align-items: end; 与 cross end 对齐</h3>
+    <div class="box box4">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>align-items: baseline; 基线对齐，跟文字大小有关</h3>
+    <div class="box box5">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item item4">4</div>
+    </div>
+
+    <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>
