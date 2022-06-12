@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <style>
+        .dress {
+            /* background-color: pink; */
+            margin-top: 20px;
+        }
+
+        .dress .header {
+            height: 58px;
+            line-height: 58px;
+        }
+
+        .dress .header .left-area {
+            float: left;
+        }
+
+        .dress .header .right-area {
+            float: right;
+        }
+
+        .dress .header .right-area .tab {
+            margin-left: 20px;
+        }
+
+        .dress .header .right-area .tab:hover,
+        .dress .header .right-area .tab-active {
+            color: #ff6700;
+            border-bottom: 1px solid #ff6700;
+        }
+
+        /* 列表区域 */
+        .dress .list {
+            margin-right: -14px;
+        } 
+        
+        .dress .list .item {
+            float: left;
+
+            /* position: relative;
+            top: 0; */
+
+            width: 234px;
+            height: 300px;
+            margin-right: 14px;
+            margin-bottom: 14px;
+            background-color: #fff;
+
+            /* 动画效果 */
+            transition: all 0.3s ease-in;
+        }
+
+        .dress .list .item.item1 {
+            height: 614px;
+        }
+
+        .dress .list .item.item9,
+        .dress .list .item.item10 {
+            height: 143px;
+        }
+
+        .dress .list .item > a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dress .list .item:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .5);
+            /* top: -3px; */
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="mi_wrapper dress">
+        <!-- 头部区域 -->
+        <div class="header clear_fix">
+            <div class="left-area">
+                <h3 class="title">智能穿戴</h3>
+            </div>
+            <div class="right-area">
+                <a class="tab tab-active hot" href="#">热门</a>
+                <a class="tab info" href="#">穿戴</a>
+            </div>
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="clear_fix">
+            <ul class="list">
+                <li class="item item1"><a href="#">1</a></li>
+                <li class="item item2"><a href="#">2</a></li>
+                <li class="item item3"><a href="#">3</a></li>
+                <li class="item item4"><a href="#">4</a></li>
+                <li class="item item5"><a href="#">5</a></li>
+                <li class="item item6"><a href="#">6</a></li>
+                <li class="item item7"><a href="#">7</a></li>
+                <li class="item item8"><a href="#">8</a></li>
+                <li class="item item9"><a href="#">9</a></li>
+                <li class="item item10"><a href="#">10</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
