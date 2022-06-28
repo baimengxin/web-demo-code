@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 定义函数
+        function foo() {
+            console.log('foo函数：', this);
+        }
+
+        // this 指向有3种
+
+        // 1. 直接调用 (指向 window)
+        foo()   // window
+
+        // 2. 隐式调用 (指向调用对象本身)
+        var obj = { name: '张三' }
+        obj.fn = foo
+
+        obj.fn()    // obj
+
+        // 3. 显式绑定 通过 call / apply 调用 (指向绑定的对象)
+        foo.call('abc') // String {'abc'}
+</script>
+</body>
+</html>

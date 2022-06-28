@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 普通函数是有 this 的标识符
+        // function foo() {
+        //     console.log('foo', this);
+        // }
+
+        // foo()   // window
+        // foo.apply('aaa')    // aaa
+
+        // 2. 箭头函数中，压根没有 this
+        // var bar = () => {
+        //     console.log('bar', this);
+        // }
+        // bar()   // window
+        // bar.apply('aaa')    // window
+
+        // 3. this 的查找规则
+        // 他会通过作用域链去往上层查找，直到找到全局 window
+        var obj = {
+            name: 'obj',
+            foo: function() {
+                var bar = () => {
+                    console.log('bar', this);
+                }
+                return bar
+            }
+        }
+
+        var fn = obj.foo()
+        fn.apply('aaa') // 这里指向 obj
+
+        // 这是因为 fn此时调用的 obj.foo 函数，然后 foo 函数内部有自己的 this，它指向 obj，又因为箭头函数里面的 没有 this， 此时这个 this 就会通过作用域链去查找上一层，上一层就有自己的 this 指向 obj
+
+        var message = 'Globar message'
+        var obj2 = {
+            name: 'obj',
+            foo: () => {
+                var bar = () => {
+                    console.log('bar', this);
+                    console.log(message);
+                }
+                return bar
+            }
+        }
+
+        var fn2 = obj2.foo()
+        fn2.apply('aaa') // 这里指向 window
+
+        // 核心就是通过作用域链去查找
+    </script>
+</body>
+</html>

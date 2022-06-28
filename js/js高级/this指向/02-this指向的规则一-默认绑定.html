@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // "use strict"
+
+        // this 指向 window的情况
+        // 普通函数被独立调用
+        function foo() {
+            console.log('foo:', this);
+        }
+
+        foo()   // window
+
+        // 2. 函数定义在对象中，但是独立调用
+        var obj = {
+            name: '张三',
+            bar: function() {
+                console.log('bar:', this);
+            }
+        }
+
+        var baz = obj.bar
+        baz()   // 此时满足函数独立调用，所以指向 window
+
+        // 3. 高阶函数
+        function test(fn) {
+            fn()    // 这里也是独立函数调用，所以指向 window
+        }
+
+        test(obj.bar)   // window
+
+        // 4. 严格模式下，独立调用的函数 指向是 undefined
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 显式绑定 apply 和 call 比 隐式绑定 高
+        function foo() {
+            console.log('foo:', this);
+        }
+
+        // var obj = { fn: foo }
+        // obj.fn.apply('abc')
+        // obj.fn.call('abc')
+
+        // 2.1 bind 高于 默认绑定
+        // var bar = foo.bind('aaa')
+        // bar()
+
+        // 2.2 bind 高于 隐式绑定
+        // var obj = {
+        //     name: 'bai',
+        //     baz: bar
+        // }
+        // obj.baz()
+
+        // 3. new 绑定高于隐式绑定
+        // var obj = {
+        //     name: 'bai',
+        //     foo: function() {
+        //         console.log('foo:', this);
+        //         console.log('foo:', this === obj);
+        //     }
+        // }
+
+        // obj.foo()   // true
+
+        // new obj.foo()   // false
+
+        // 4. new 绑定 高于 显式绑定
+        // 4.1 new绑定不可以和 apply、call 一起使用
+
+        // 4.2 new 高于 bind
+        // var bindFn = foo.bind('add')
+        // new bindFn()
+
+        // 5. bind 高于 apply、call
+        // var bindFn = foo.bind('aaa')
+        // bindFn.apply('bbb') // aaa
+        // bindFn.call('bbb')  // aaa
+
+        // 总结：this 指向的优先级
+        // 1. new绑定
+        // 2. 显式绑定 apply、call、bind
+        // 3. 隐式绑定
+        // 4. 默认绑定
+    </script>
+</body>
+</html>

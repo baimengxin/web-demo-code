@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 情况一：使用 null 或者 undefined 显式绑定，显式绑定会被忽略，使用默认规则，即指向 window
+        // function foo() {
+        //     console.log('foo:', this);
+        // }
+
+        // foo.apply('abc')
+        // foo.apply(null) // window
+        // foo.apply(undefined)    // window
+
+        // 情况二：间接函数引用
+        var obj1 = {
+            name: '张三',
+            foo: function() {
+                console.log('foo:', this);
+            }
+        }
+        
+        var obj2 = { name: '李四' }
+        obj2.foo = obj1.foo
+        obj2.foo()  // 指向 obj2
+
+        ;(obj2.foo = obj1.foo)()    // 指向 window
+    </script>
+</body>
+</html>

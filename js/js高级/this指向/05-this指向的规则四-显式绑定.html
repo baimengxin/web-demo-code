@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 显式绑定
+        // 明确绑定到那个对象
+
+        var obj = {
+            name: 'bai'
+        }
+
+        function foo() {
+            console.log('foo:', this);
+        }
+
+        // 把函数  this 指向到 obj
+        // obj.fn = foo
+        // obj.fn()
+
+        // 执行函数，并且强制 this 就是 obj 对象
+        foo.call(obj)
+    </script>
+</body>
+</html>
