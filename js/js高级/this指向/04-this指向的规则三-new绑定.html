@@ -16,13 +16,13 @@
             4. 没有显示返回非空对象时，默认返回这个对象
         */
        
-        function foo() {
-            this.name = 'bai'
-            console.log('foo函数:', this);
+        function foo(name) {
+            this.name = name
+            console.log('foo函数:', this.name);
         }
 
-        new foo()
-
+        const obj = new foo('bai')
+        console.log(obj);
     </script>
     
 </body>
