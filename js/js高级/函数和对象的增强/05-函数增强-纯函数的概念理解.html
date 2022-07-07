@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 纯函数的理解
+        // 1. 确定的输入，一定会产生确定的输出
+        // 2. 函数在执行过程中，不能产生副作用
+
+        // 这不是纯函数，它产生了副作用，修改了 obj 的值
+        function foo(info) {
+            console.log(info.name, info.age);
+            info.flag = '确认修改'
+
+        }
+
+        var obj = {
+            name: '张三', 
+            age: 18
+        }
+
+        foo(obj)
+
+        console.log(obj);   // 这里的 obj 已经多了一个值
+    </script>
+</body>
+</html>

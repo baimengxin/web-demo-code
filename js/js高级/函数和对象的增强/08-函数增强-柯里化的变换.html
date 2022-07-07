@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 普通的函数
+        function foo1(x, y, z) {
+            console.log(x + y + z);
+        }
+
+        foo1(10, 20, 30) // 60
+
+        // foo(10)(20)(30) // NaN
+        // Uncaught TypeError: foo(...) is not a function
+
+        // 因为 foo 不是一个柯里化的函数，所以目前是不能这样调用的
+
+        // 柯里化函数
+        function foo2(x) {
+            return function(y) {
+                return function (z) {
+                    console.log(x + y + z);
+                }
+            }
+        }
+
+        foo2(10)(30)(50)
+        
+        // 柯里化另一种写法：箭头函数
+        function foo3(x) {
+            return y => z => {
+                console.log(x + y + z);
+            }
+        }
+
+        foo3(10)(20)(10)
+
+        var foo4 = x => y => z => console.log(x + y + z);
+
+        foo4(10)(2)(30)
+    </script>
+</body>
+</html>

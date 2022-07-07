@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对数组操作的两个函数
+        // slice：slice截取数组时不会对原数组进行任何操作，而是生成一个新的数组 (是纯函数)
+        // splice：截取数组，会返回一个新的数组，也会对原数组进行修改 (不是纯函数)
+
+        var arr = ['张三', '李四', '王五']
+
+        var newArr1 = arr.slice(0, 1)
+        console.log(newArr1);
+
+
+        var newArr2 = arr.splice(0, 1)
+        console.log(newArr2);
+        console.log(arr);   // 本来 3个截取后产生后就剩 2个了
+
+        // slice就是一个纯函数，不会修改数组本身，而splice函数不是一个纯函数
+    </script>
+</body>
+</html>

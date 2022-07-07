@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: 'bai',
+            age: 18
+        }
+
+        // 获取对象的属性描述符 getOwnPropertyDescriptor
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'name'));
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
+
+        // 获取对象的多个属性描述符 getOwnPropertyDescriptors
+        // console.log(Object.getOwnPropertyDescriptors(obj));
+
+        // 禁止对象扩展新属性 preventExtensions
+        // Object.preventExtensions(obj)
+        // obj.height = 1.88
+
+        // 密封对象，不允许配置和删除属性 seal
+        // Object.seal(obj)
+        // delete obj.name
+
+        // 冻结对象，不允许修改现有属性 freeze
+        Object.freeze(obj)
+        obj.name = 'xiaobai'
+
+        console.log(obj);
+    </script>
+</body>
+</html>

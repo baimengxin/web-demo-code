@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 
+        function foo() {
+            // console.log(arguments);
+            // console.log(arguments.length);
+
+            // 1. 默认用法
+            // 通过索引获取内容
+            // console.log(arguments[0]);
+            // console.log(arguments[1]);
+
+            // 遍历
+            // for(var i = 0; i < arguments.length; i++) {
+            //     console.log(arguments[i]);
+            // }
+
+            // for(var args of arguments) {
+            //     console.log(args);
+            // }
+
+            // 2.1 将 arguments 转换成数组方式一：
+            // var newArgs1 = []
+            // for(var args of arguments) {
+            //     newArgs1.push(args)
+            // }
+            // console.log(newArgs1);
+
+            // 2.2 将 arguments 转换成数组方式二：
+            // var newArgs = [].slice.apply(arguments)
+            // var newArgs = Array.prototype.slice.apply(arguments)
+            // console.log(newArgs);
+
+            // 2.3 将 arguments 转换成数组方式三：(es6)
+            // var newArgs = Array.from(arguments)
+            // var newArgs = [...arguments]
+            // console.log(newArgs);
+
+
+        }
+
+        foo(10, 20, 30, 41)
+    </script>
+</body>
+</html>

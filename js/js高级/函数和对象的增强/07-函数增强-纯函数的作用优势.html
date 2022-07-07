@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 纯函数的优点
+        // 1. 安心的写：你不需要去关心外层作用域中的值，目前是什么状态
+        var count = 0
+
+        // function add(num) {
+        //     return num + count
+        // }
+
+        // add(5)  // 5
+        
+        // count = 10
+        // add(5)  // 15
+        // 因为函数引用了外部作用域的值，所以如果外部作用域的值发生了改变，则函数的结果也会发生了改变，这不是我们预期的结果
+
+
+        // 真正的做法
+        function add(num) {
+            return num
+        }
+
+        // 2. 安心的用：调用函数时，可以知道：确定的输入一定产生确定的输出
+        add(5)  // 10
+        add(5)  // 10
+
+
+        // react 中编写函数组件
+        function Foo(props) {
+            // 在 react 可以查看 传过来的 props 值
+            console.log(props.name);
+
+            // 但是不能进行修改
+            // props.name = '张三';    // 这是错误的
+        }
+    </script>
+</body>
+</html>

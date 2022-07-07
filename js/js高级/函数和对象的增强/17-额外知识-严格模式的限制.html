@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+
+        // 1. 不会意外创建全局变量
+        // function foo() {
+        //     message = 'hello'
+        // }
+
+        // foo()
+
+        // 2. 静默错误
+        var obj = {
+            name: 'bai'
+        }
+
+        Object.defineProperty(obj, 'name', {
+            // 不允许改变值
+            writable: false,
+        })
+
+        // obj.name = 'kobe'
+        // console.log(obj.name);
+
+        // 3. 严格模式下 不能删除属性
+        // delete obj.name
+        console.log(obj);
+
+        // 4. 参数名称不能相同
+        // function foo(num, num) {}
+
+        // 5. 不允许 0 的八进制语法
+        // console.log(01123);
+
+
+        // 6. eval 函数不能为上层创建变量
+        // eval(`var message = "hello"`)
+        // console.log(message);
+
+        // 7. 严格模式下，this绑定不会默认转成对象
+        function foo() {
+            console.log(this);
+        }
+        
+        foo.apply(123)
+        foo.apply('abc')
+        foo.apply(undefined)
+        foo.apply(null)
+
+        // 独立函数执行默认模式下，绑定 window 对象，在严格模式下，不绑定全局对象而是 undefined
+        foo()
+
+    </script>
+</body>
+</html>

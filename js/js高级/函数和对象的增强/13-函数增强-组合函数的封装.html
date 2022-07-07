@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 第一步对 数字*2
+        function double(num) {
+            return num * 2
+        }
+
+        // 第二步对 数字**2
+        function square(num) {
+            return num ** 2
+        }
+
+        // 封装的函数：你传入多个函数，自动的将多个函数组合在一起挨个调用
+        function composeFn(...fns) {
+            // 1. 边界判断 (edge case)
+            var length = fns.length
+
+            // 如果没有传函数进来，那就不用执行下面代码
+            if(length <= 0) return 
+
+            // 遍历传入的多个函数名，并且判断是否是函数
+            for(var i = 0; i < length; i++) {
+                var fn = fns[i]
+                if(typeof fn !== 'function') {
+                    // 不是函数提出报错
+                    throw new Error(`index position ${i} must be function`)
+                }
+            }
+
+            // 2. 返回新的函数
+            return function(...args) {
+                // 拿到函数的第一个返回值
+                var result = fns[0].apply(this, args)
+                console.log(1, result);
+                for(var i = 1; i < length; i++) {
+                    var fn = fns[i]
+                    result = fn.apply(this, [result])
+                    console.log(2, result);
+                }
+                
+
+                return result
+            }
+        }
+
+        // debugger
+        var newCompose = composeFn(double, square)
+        console.log(newCompose(10));
+
+        var newFn = composeFn(double, square, console.log)
+
+        // newFn(20)
+        // newFn(30)
+    </script>
+</body>
+</html>

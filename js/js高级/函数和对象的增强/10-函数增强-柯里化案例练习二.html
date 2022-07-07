@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 案例二：数字相加
+
+        // 没有柯里化
+        function add(num1, num2) {
+            return num1 + num2
+        }
+
+        // 与 10 相加
+        add(10, 20)
+        add(10, 10)
+
+        // 与 5 相加
+        add(5, 10)
+        add(5, 20)
+
+        // 柯里化后
+        function addNum(num1) {
+            return function(num2) {
+                return num1 + num2
+            }
+        }
+
+        // 与 5 相加
+        var addResult5 = addNum(5)
+
+        addResult5(10)
+        addResult5(30)
+
+        // 与 10 相加
+        var addResult10 = addNum(10)
+
+        addResult10(50)
+        addResult10(40)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 组合函数 就是将函数组合在一起使用
+
+        function double(num) {
+            return num * 2
+        }
+
+        function square(num) {
+            return num ** 2
+        }
+
+        console.log(square(double(10)));
+        console.log(square(double(20)));
+
+        // 假如每次都需要这样调用的话，可以把函数组合在一起
+        function compose(num) {
+            return square(double(num))
+        }
+
+        console.log(compose(10));
+        console.log(compose(20));
+    </script>
+</body>
+</html>

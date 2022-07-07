@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: 'bai',
+            age: 18
+        }
+
+        /**
+         * Object.defineProperty(obj, prop, descriptor)
+         * 
+         * 三个参数：
+         * obj: 要在其上定义属性的对象
+         * prop: Symbol要定义或修改的属性的名称或名称
+         * descriptor: 正在定义或修改的属性的描述符
+         * 
+         * 返回值：
+         * 被传递给函数的对象
+         * 
+        */
+        Object.defineProperty(obj, 'name', {
+            // obj 对象的 name 属性不可删除
+            configurable: false,
+            // 表示属性是否可以通过for-in或者Object.keys()返回该属性
+            enumerable: false,
+            // 表示是否可以修改属性的值
+            writable: false,
+
+            // 属性的value值，读取属性时会返回该值，修改属性时，会对其进行修改
+            value: 'xiaobai'
+        })
+
+        delete obj.name
+        obj.name = 'zs'
+        console.log(obj);
+
+        console.log(Object.keys(obj));  // [age]
+    </script>
+</body>
+</html>

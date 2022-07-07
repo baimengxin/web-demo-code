@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 案例一：打印一些日志
+        // 信息一：日志的时间
+        // 信息二：日志的类型：info/debug/feature
+        // 信息三：具体的信息
+
+        // 1. 没有柯里化的时间做法
+        // function logInfo(date, type, message) {
+        //     console.log(`时间：${date}，类型：${type}，内容：${message}`);
+        // }
+
+        // // 打印日志
+        // logInfo('2022-07-05', 'DEBUG', '修复了界面的bug')
+
+        // // 又修复了 bug
+        // logInfo('2022-07-05', 'DEBUG', '修复了服务器的bug')
+        // logInfo('2022-07-05', 'DEBUG', '修复了服务器的bug')
+        // logInfo('2022-07-05', 'DEBUG', '修复了服务器的bug')
+
+        // // 增加功能
+        // logInfo('2022-07-05', 'FEATURE', '增加了商品的过滤功能')
+
+        // 2. 柯里化的做法
+        // function logInfo(date) {
+        //     return function(type) {
+        //         return function(message) {
+        //             console.log(`时间：${date}，类型：${type}，内容：${message}`);
+        //         }
+        //     }
+        // }
+
+        var logInfo = date => type => message => {
+            console.log(`时间：${date}，类型：${type}，内容：${message}`);
+        }
+
+        var logToday = logInfo('2022-07-05')
+        var logTodayDebug = logToday('DEBUG')
+        var logTodayFeature = logToday('FEATURE')
+
+        // 打印日志
+        logTodayDebug('修改了bug1')
+        logTodayDebug('修改了bug2')
+        logTodayDebug('修改了bug3')
+        logTodayFeature('增加了功能1')
+    </script>
+</body>
+</html>
