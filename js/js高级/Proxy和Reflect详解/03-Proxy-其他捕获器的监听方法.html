@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对对象的所有属性进行监听
+        const obj = {
+            name: 'bai',
+            age: 18,
+            height: 1.88
+        }
+
+        // 1. 创建一个 Proxy 对象
+        const objProxy = new Proxy(obj, {
+            set: (target, key, newValue, receiver) => {
+                console.log(`监听${key}的设置：`, newValue);
+
+                target[key] = newValue
+            },
+            get: function(target, key, receiver) {
+                console.log(`监听${key}的获取：`, target);
+                return target[key]
+            },
+
+            // 其他捕获器
+            deleteProperty: function(target, key) {
+                console.log(`监听${key}的删除：`, target);
+                // 这里监听到要做删除操作
+                delete target[key]
+            },
+
+            has: function(target, key) {
+                console.log(`监听${key}的has判断：`, target);
+                return key in target
+            }
+        })
+
+        // 2. 对 obj 的所有操作，应该去操作 objProxyS
+        // console.log(objProxy.name);
+        // objProxy.name = 'kobe'
+        // console.log(objProxy.name);
+        // console.log(objProxy.age);
+
+
+        // objProxy.address = "广州市"
+        // delete objProxy.age
+        console.log('age' in objProxy);
+        console.log(obj);
+
+    </script>
+</body>
+</html>

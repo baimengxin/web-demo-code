@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+
+        const obj = {
+            name: 'bai',
+            age: 18
+        }
+
+        // 需求：判断一个对象的属性是否被删除
+
+        Object.defineProperty(obj, 'name', {
+            configurable: false
+        })
+        
+        // 1. 用以前的方式进行操作
+        // delete obj.name
+        // if(obj.name) {
+        //     console.log('name没有被删除');
+        // } else {
+        //     console.log('name删除成功');
+        // }
+
+        // 在严格模式下可能会报错，报错的话就有可能会造成后续代码不会执行
+
+
+        // 2. 用 Reflect (es6)
+        if(Reflect.deleteProperty(obj, 'name')) {
+            console.log('name删除成功');
+        } else {
+            console.log('name没有被删除');
+        }
+
+        // Reflect.deleteProperty() 这个api会直接返回布尔值，所以可以直接判断是否被删除，在严格模式下也不会报错
+    </script>
+</body>
+</html>

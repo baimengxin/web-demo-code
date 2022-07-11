@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            _name: 'bai',
+            age: 18,
+
+            set name(newValue) {
+                console.log('this', this);  // 默认是 obj
+                this._name = newValue
+            },
+            get name() {
+                return this._name
+            }
+        }
+
+        const objProxy = new Proxy(obj, {
+            set: function(target, key, newValue, receiver) {
+                // target[key] = newValue
+
+                // 1. 好处一：代理对象的目的：不再直接操作原对象
+                // 2. 好处二：Reflect.set() 方法有返回 Boolean 值，可以判断本次操作是否成功
+                /*
+                    3. 好处三：
+                    > receiver 就是外层 Proxy 对象
+                    > Reflect.set/get 最后一个参数，可以决定对象访问器 setter/getter 的 this 指向
+
+                */
+               console.log('Proxy 中设置方法被调用');
+                const isSuccess = Reflect.set(target, key, newValue, receiver)
+                if(!isSuccess) {
+                    throw new Error(`set ${key} failure`)
+                }
+            },
+            get: function(target, key, receiver) {
+                console.log('Proxy 中获取方法被调用');
+                return Reflect.get(target, key, receiver)
+            }
+        })
+
+        // 操作代理对象
+        objProxy.name = 'xiaobai'
+        console.log(obj);
+    </script>
+</body>
+</html>

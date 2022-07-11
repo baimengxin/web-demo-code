@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class="name"></h2>
+
+    <script>
+        const obj = {
+            name: 'bai',
+            age: 18,
+            height: 1.88
+        }
+
+        // 需求：监听对象属性的所有操作
+        // 监听属性的操作
+        // 1. 针对一个属性
+        // let _name = obj.name;
+        // Object.defineProperty(obj, 'name', {
+        //     set: function(newValue) {
+        //         console.log('监听：设置了新的值：', newValue);
+        //         _name = newValue;
+        //     },
+        //     get: function() {
+        //         console.log('监听：获取新的值');
+        //         return _name
+        //     }
+        // })
+
+        // 2. 监听所有的属性：遍历所有的属性，对每一个属性使用 defineProperty
+        const keys = Object.keys(obj)
+        for(const key of keys) {    
+            let value = obj[key]
+
+            Object.defineProperty(obj, key, {
+                set: function(newValue) {
+                    console.log(`监听：设置了新的${key}值：`, newValue);
+                    value = newValue;
+                },
+                get: function() {
+                    console.log(`监听：获取新的${key}值`);
+                    return value
+                }
+            })
+        }
+        
+
+        console.log(obj.name);
+        obj.name = 'xiaobai'
+        console.log(obj.age);
+        obj.age = 17
+        
+        const nameEl = document.querySelector('.name')
+        nameEl.textContent = obj.name
+
+        // Object.defineProperty设计的初衷，不是为了去监听截止一个对象中所有的属性的
+        // 我们在定义某些属性的时候，初衷其实是定义普通的属性，但是后面我们强行将它变成了数据属性描述符
+        // 其次，如果我们想监听更加丰富的操作，比如新增属性、删除属性，那么 Object.defineProperty 是无能为力的
+    </script>
+</body>
+</html>

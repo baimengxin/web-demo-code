@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对对象的所有属性进行监听
+        const obj = {
+            name: 'bai',
+            age: 18,
+            height: 1.88
+        }
+
+        // 1. 创建一个 Proxy 对象
+        /**
+         * set：
+         * target：目标对象（侦听的对象）
+         * property：将被设置的属性key
+         * value：新属性值
+         * receiver：调用的代理对象
+         * 
+         * */ 
+
+        /**
+         * get：三个参数
+         * target：目标对象（侦听的对象）
+         * property：被获取的属性key
+         * receiver：调用的代理对象
+         * 
+         * */  
+        const objProxy = new Proxy(obj, {
+            set: (target, key, newValue, receiver) => {
+                console.log(`监听${key}的设置：`, newValue);
+
+                target[key] = newValue
+            },
+            get: function(target, key, receiver) {
+                console.log(`监听${key}的获取：`, target);
+                return target[key]
+            }
+        })
+
+        // 2. 对 obj 的所有操作，应该去操作 objProxy
+        // console.log(objProxy.name);
+        // objProxy.name = 'kobe'
+        // console.log(objProxy.name);
+        // console.log(objProxy.age);
+
+
+        objProxy.address = "广州市"
+        console.log(obj);
+
+    </script>
+</body>
+</html>
