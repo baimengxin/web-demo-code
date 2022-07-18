@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise((resolve, reject) => {
+            resolve('success')
+            // reject('failure')
+        })
+
+        // 更推荐这种写法
+        // promise.then(res => {
+            
+        // }).catch(err => {
+
+        // })
+
+        // 这种写法也是可以的
+        // promise.then(res => {
+        //     console.log('成功回调', res);
+        // }, err => {
+        //     console.log('失败回调', err);
+        // })
+
+        // then 方法会依次执行
+        promise.then(res => {
+            console.log('成功回调1', res);
+        })
+        promise.then(res => {
+            console.log('成功回调2', res);
+        })
+        promise.then(res => {
+            console.log('成功回调3', res);
+        })
+        promise.then(res => {
+            console.log('成功回调4', res);
+        })
+    </script>
+</body>
+</html>

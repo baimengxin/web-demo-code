@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function execCode(counter) {
+            const promise = new Promise((resolve, reject) => {
+                // 异步任务
+                setTimeout(() => {
+                    // counter 是可以计算的
+                    if (counter > 0) {
+                        let total = 0;
+                        for (let i = 0; i < counter; i++) {
+                            total += i;
+                        }
+
+                        // 在某一个时刻只需要回调传入的函数，并且返回成功的值
+                        resolve(total)
+                    } else {
+                        // 失败的回调
+                        reject(`${counter} 值有问题`)
+                    }
+                }, 3000)
+            })
+
+            return promise
+        }
+
+        // const promise = execCode(100)
+        // promise.then((value) => {
+        //     console.log('有了成功的结果', value);
+        // })
+        // promise.catch((err) => {
+        //     console.log('有了失败的结果', err);
+        // })
+
+        // const promise2 = execCode(-100)
+        // promise2.then((value) => {
+        //     console.log('有了成功的结果', value);
+        // })
+        // promise2.catch((err) => {
+        //     console.log('有了失败的结果', err);
+        // })
+
+        execCode(-222).then((value) => {
+            console.log('成功', value);
+        }).catch((err) => {
+            console.log('失败', err);
+        })
+    </script>
+</body>
+
+</html>

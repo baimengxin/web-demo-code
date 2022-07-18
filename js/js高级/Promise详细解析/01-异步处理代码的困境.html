@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 设计这样一个函数
+        function execCode(counter, successCallback, failureCallback) {
+            // 异步任务
+            setTimeout(() => {
+                // counter 是可以计算的
+                if(counter > 0) {
+                    let total = 0;
+                    for(let i = 0; i < counter; i++) {
+                        total += i;
+                    }
+
+                    // 在某一个时刻只需要回调传入的函数，并且返回成功的值
+                    successCallback(total)
+                } else {
+                    // 失败的回调
+                    failureCallback(`${counter} 值有问题`)
+                }
+            },3000)
+        }
+
+
+        // 2. es5 之前，处理异步是这样封装的
+        execCode('abc', (value) => {
+            console.log('本次异步任务是成功的', value);
+        }, (err) => {
+            console.log('本次异步任务是失败的');
+        })
+    </script>
+</body>
+</html>

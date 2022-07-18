@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 实例方法
+        // const promise = new Promise((resolve) => {
+        //     // 进行一系列操作
+        //     resolve('result')
+        // })
+
+        // 类方法
+        // Promise.resolve('123').then(res => {
+        //     console.log('then方法接收resolve的参数结果', res);
+        // })
+
+        // 相当于
+        // new Promise((resolve) => {
+        //     resolve('hello')
+        // })
+
+        // 类方法的应用场景
+        // 假如有一个数据已经有了，我需要转换为 Promise 使用
+        const studentList = []
+
+        Promise.resolve(studentList).then(res => {
+            console.log('then结果', res);
+        })
+        
+    </script>
+</body>
+</html>

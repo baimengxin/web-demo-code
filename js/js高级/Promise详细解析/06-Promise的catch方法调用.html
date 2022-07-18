@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise((resolve, reject) => {
+            // resolve('success')
+            reject('failure')
+        })
+
+        // promise.then(res => {
+        //     console.log('成功的回调', res);
+        // })  
+        // Uncaught (in promise) failure，没有捕获 Promise 的错误
+        
+        // 因为 Promise 会单独监听每个，如果 Promise 返回失败的状态，而后续没有处理失败的方法就会返回上述错误
+
+        // 所以 then 和 catch 建议一起写
+        promise.then(res => {
+            console.log('成功的回调', res);
+        }).catch(err => {   
+            console.log('失败的回调', err);
+        })
+        
+
+        promise.catch(err => {
+            console.log('失败的回调1', err);
+        })
+        promise.catch(err => {
+            console.log('失败的回调2', err);
+        })
+        promise.catch(err => {
+            console.log('失败的回调3', err);
+        })
+        promise.catch(err => {
+            console.log('失败的回调4', err);
+        })
+
+    </script>
+</body>
+</html>

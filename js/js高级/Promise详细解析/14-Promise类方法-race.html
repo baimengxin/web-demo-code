@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise1')
+            }, 3000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise2')
+            }, 2000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise3')
+            }, 1000)
+        })
+
+        const p4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('resolve promise3')
+                reject('reject promise4 err')
+            }, 100)
+        })
+
+        // race 竞速
+        // 表示多个Promise相互竞争，谁先有结果，那么就使用谁的结果
+        Promise.race([p4, p1, p2, p3]).then(res => {
+            console.log(res);
+        }).catch(err => {
+            // 不会打印
+            console.log(err);
+        })
+    </script>
+</body>
+</html>

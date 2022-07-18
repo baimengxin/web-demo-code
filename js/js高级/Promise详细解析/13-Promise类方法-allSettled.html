@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise1')
+            }, 3000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise2')
+            }, 2000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise3')
+            }, 1000)
+        })
+
+        const p4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('resolve promise3')
+                reject('reject promise4 err')
+            }, 1000)
+        })
+
+        // es11 出的 allSettled()
+        // 该方法会在所有的Promise都有结果（settled），无论是fulfilled，还是rejected时，才会有最终的状态
+        // 并且这个Promise的结果一定是fulfilled的；
+        Promise.allSettled([p4, p1, p2, p3]).then(res => {
+            console.log(res);
+        }).catch(err => {
+            // 不会打印
+            console.log(err);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('resolve promise1')
+                reject('reject promise1 err')
+
+            }, 3000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('resolve promise2')
+                reject('reject promise2 err')
+
+            }, 2000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('resolve promise3')
+                reject('reject promise3 err')
+
+            }, 1000)
+        })
+
+        const p4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('resolve promise3')
+                reject('reject promise4 err')
+            }, 100)
+        })
+
+        // any(es12)
+        // any方法会等到一个fulfilled状态，才会决定新Promise的状态；
+        // 如果所有的Promise都是reject的，那么也会等到所有的Promise都变成rejected状态；
+        // 如果所有的Promise都是reject的，那么会报一个AggregateError的错误
+        Promise.any([p4, p1, p2, p3]).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log('err的',err);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p = new Promise((resolve) => {
+            setTimeout(()=> {
+                resolve('p的 resolve')
+            }, 2000)
+        })
+
+
+        const promise = new Promise((resolve, reject) => {
+            // 1. 普通值
+            // resolve('resolve 传的值')
+            // resolve([
+            //     {name: 'macbook', price: 9998, intro: '有点贵'},
+            //     {name: 'iPhone', price: 998, intro: '有点便宜'}
+            // ])
+
+            // 2. resolve(promise)
+            // 如果 resolve 的值本身是 Promise 对象，那么当前的 Promise 的状态会由传入的 Promise 来决定
+            // resolve(p)
+
+
+            // 3. resolve(thenable 对象)
+            resolve({
+                name: 'bai',
+                then: function(resolve) {
+                    resolve(1111)
+                }
+            })
+
+        })
+
+        promise.then((res) => {
+            console.log('then中拿到结果', res);
+        })
+    </script>
+</body>
+</html>

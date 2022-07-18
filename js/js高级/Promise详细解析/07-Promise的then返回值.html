@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // then 的返回值
+        const promise = new Promise((resolve, reject) => {
+            resolve('11111')
+
+        })
+
+        // 链式编程
+        // promise.then().catch()
+
+        // 每次 then 的返回值是一个新的 Promise
+        // promise.then().then()
+
+        // 1. then 方法是返回一个新的 Promise，这个新的 Promise 的决议是等到 then 方法传入的回调函数时，进行决议
+        // Promise 本身就是支持链式调用
+        // then 方法是返回一个新的 Promise，链式中的 then 是在等待这个新的 Promise 有决议之后执行的
+        promise.then(res => {
+            console.log('第一个then方法', res);
+
+            // 默认会返回 undefined
+            // return new  Promise
+            return 'bbb'
+        }).then(res => {
+            // 这里的 res 是上一个 then 方法传过来的，如果没有就是 undefined
+            console.log('第二个then方法', res);
+
+            return 'then2'
+        }).then(res => {
+            console.log('第三个then方法', res);
+        })
+
+
+        promise.then(res => {
+            console.log('添加第二个then方法', res);
+        })
+
+    </script>
+</body>
+</html>

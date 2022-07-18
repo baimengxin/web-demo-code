@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise((resolve, reject) => {
+            resolve('11111')
+            // reject('11111')
+        })
+
+
+        // 1. catch 方法也会返回一个新的 Promise
+        // promise.catch(err => {
+        //     console.log('catch 的回调', err);
+        // }).then(res => {
+        //     console.log('then第一个回调', res);
+        // }).then(res => {
+        //     console.log('then第二个回调', res);
+        // })
+
+        // 2. catch 方法的执行时机
+        promise.then(res => {
+            console.log('then第一个回调', res);
+
+            // 要是想要新的 Promise 执行 reject，需要抛出异常
+            // throw new Error('第一个then抛出的异常')
+
+        }).then(res => {
+            console.log('then第二个回调', res);
+
+            throw new Error('第二个then抛出的异常')
+
+        }).then(res => {
+            console.log('then第三个回调', res);
+        }).catch(err => {
+            console.log('catch 回调执行', err);
+        })
+
+        // 打断函数的执行
+        // 1. return 
+        // 2. throw new Error 抛出异常
+        // 3. yield 暂停 (暂时中断函数执行)
+    </script>
+</body>
+</html>

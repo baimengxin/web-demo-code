@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // all
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise1')
+            }, 3000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise2')
+            }, 2000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('resolve promise3')
+            }, 1000)
+        })
+
+        const p4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('resolve promise3')
+                reject('reject promise4 err')
+            }, 1000)
+        })
+
+
+        // Promise.all([p1, p2, p3]).then(res => {
+        //     console.log(res);
+        // })
+        
+        // all的缺点: 只要有一个返回失败就不会执行后续的状态
+
+        // 当有其中一个Promise变成reject状态时，新Promise就会立即变成对应的reject状态。
+        Promise.all([p4, p1, p2, p3]).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+    </script>
+</body>
+</html>
