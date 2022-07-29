@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 应用场景
+        // 1. 用在特定的语法上
+        const names = ['张三', '李四', '王五']
+        const infos = {
+            name: 'bai',
+            age: 18,
+            height: 1.88,
+
+            // 在没有实现可迭代对象前，是会报错的
+            [Symbol.iterator]: function() {
+                const value = Object.values(this)
+                let index = 0
+
+                const Iterator = {
+                    next: () => {
+                        if(index < value.length) {
+                            return { done: false, value: value[index++] }
+                        } else {
+                            return { done: true, value: undefined }
+                        }
+                    }
+                }
+
+                return Iterator
+                
+            }
+        }
+
+        function foo() {
+            // arguments 需要传入可迭代对象
+            console.log(arguments);
+        }
+
+        // foo(...names)
+        // foo(...infos)   // Uncaught TypeError: Found non-callable @@iterator
+
+
+        // 2. 一些类的构造方法，也是传入的可迭代对象
+        // const set = new Set(['张三', '李四', '王五'])
+        // const set2 = new Set('abc')
+        // console.log(set);
+        // console.log(set2);
+
+        // const set3 = new Set(infos)
+        // console.log(set3);
+
+        // 普通对象不是可迭代对象
+        // const set4 = new Set({name: '测试', age: 18})
+        // console.log(set4);  // Uncaught TypeError: object is not iterable (cannot read property Symbol(Symbol.iterator))
+
+        // 3. 一些常用的方法
+        const p1 = Promise.resolve('aaa')
+        const p2 = Promise.resolve('bbb')
+        const p3 = Promise.resolve('ccc')
+        const pSet = new Set()
+        pSet.add(p1)
+        pSet.add(p2)
+        pSet.add(p3)
+
+        // console.log(pSet);
+
+        // Promise.all(pSet).then(res => {
+        //     console.log(res);
+        // })
+
+        function bar() {
+            // console.log(arguments);
+
+            // 将 arguments 转换成 Array 类型
+            const arr = Array.from(arguments)
+            console.log(arr);
+        }
+
+        bar(11, 22, 33)
+
+    </script>
+</body>
+</html>

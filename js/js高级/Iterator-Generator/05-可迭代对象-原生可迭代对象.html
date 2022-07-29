@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原生对象已经实现可迭代协议，会生成一个迭代器对象
+        // String、Array、Map、Set、arguments对象、NodeList集合
+
+        // 1. Array
+        // const arr = ['abc', 'cba', 'nba']
+        // for(const key of arr) {
+        //     console.log(key);
+        // }
+        // // console.log(arr[Symbol.iterator]());
+        // const arrIterator = arr[Symbol.iterator]()
+        // console.log(arrIterator.next());
+        // console.log(arrIterator.next());
+        // console.log(arrIterator.next());
+        // console.log(arrIterator.next());
+
+        // 2. Set
+        // const set = new Set(['张三', '李四', '王五'])
+        // for(const item of set) {
+        //     console.log(item);
+        // }
+        // console.log(set[Symbol.iterator]());
+        // const setIterator = set[Symbol.iterator]()
+        // console.log(setIterator.next());
+        // console.log(setIterator.next());
+        // console.log(setIterator.next());
+        // console.log(setIterator.next());
+
+
+        // 3. arguments
+        function foo() {
+            for(const arg of arguments) {
+                console.log(arg);
+            }
+        }
+
+        foo(100, 200, 300, 400)
+
+        // 总结：只要是可迭代对象就能使用 for-of 遍历
+    </script>
+</body>
+</html>

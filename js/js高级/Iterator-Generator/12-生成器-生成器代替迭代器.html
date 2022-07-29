@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const names = ['张三', '李四', '王五']
+        const arrs = [11, 22, 33, 44, 55]
+
+        function* createArrayIterator(arr) {
+            for(let i = 0; i < arr.length; i++) {
+                yield arr[i]
+            }
+
+            // yield arr[0]
+            // yield arr[1]
+            // yield arr[2]
+        }
+
+        const namesIterator = createArrayIterator(names)
+        // console.log(namesIterator.next());
+        // console.log(namesIterator.next());
+        // console.log(namesIterator.next());
+        // console.log(namesIterator.next());
+
+        const arrsIterator = createArrayIterator(arrs)
+        // console.log(arrsIterator.next());
+        // console.log(arrsIterator.next());
+        // console.log(arrsIterator.next());
+        // console.log(arrsIterator.next());
+        // console.log(arrsIterator.next());
+        // console.log(arrsIterator.next());
+
+
+        // 需求：传入 3-9,打印到 8就结束 [3, 9)
+        function* createRangeGenerator(start, end) {
+            for (let i = start; i < end; i++) {
+                yield i
+            }
+        }
+
+        const rangeIterator = createRangeGenerator(3, 9)
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+        console.log(rangeIterator.next());
+
+    </script>
+</body>
+</html>

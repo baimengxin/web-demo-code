@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 正常情况下，对象是不可以被迭代的
+        class Person {
+            constructor(name, age, friends) {
+                this.name = name
+                this.age = age
+                this.friends = friends
+            }
+
+            // 如果想要这个类可迭代的话，可以添加对应的迭代器方法
+            // runing() {}
+
+            [Symbol.iterator]() {
+                let index = 0
+
+                const iterator = {
+                    next: () => {
+                        if(index < this.friends.length) {
+                            return { done: false, value: this.friends[index++] }
+                        } else {
+                            return { done: true, value: undefined }
+                        }
+                    }
+                }
+
+                return iterator
+            }
+        }
+
+
+        // 需求：每次new出来的类都可以被迭代
+        const p1 = new Person('张三', 18, ['abc', 'cba', 'nba'])
+        const p2 = new Person('李四', 19, ['111', '222', '333'])
+
+        for(const key of p2) {
+            console.log(key);
+        }
+
+        // 另一种写法：巧妙运用 
+        // for (const key of Object.values(p1)) {
+        //     console.log(key);
+        // }
+    </script>
+</body>
+</html>

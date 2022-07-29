@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 
+
+        function requestDate(url) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(url)
+                }, 1000)
+            })
+        }
+
+        // requestDate('http://bai').then(res => {
+        //     console.log('res：', res);
+        // })
+
+        /*
+            需求：
+            1. 发送一次网络请求，等到这次网络请求的结果
+            2. 发送第二次网络请求，等待这次网络请求的结果
+            3. 发送第三次网络请求，等待这次网络请求的结果
+        */
+
+        // 方式一：层层嵌套 (地狱回调 callback hell)
+        // function getDate() {
+        //     // 1. 第一次的结果
+        //     requestDate('bai').then(res1 => {
+        //         console.log('第一次的结果：', res1);
+
+        //         // 2. 第二次的结果
+        //         requestDate(res1 + '-kobe').then(res2 => {
+        //             console.log('第二次的结果：', res2);
+
+        //             // 1. 第三次的结果
+        //             requestDate(res2 + '-james').then(res3 => {
+        //                 console.log('第三次的结果：', res3);
+        //             })
+        //         })
+        //     })
+        // }
+
+
+
+        // 方式二：使用 Promise 来解决回调地狱
+        // 链式调用
+        // function getDate() {
+        //     requestDate('bai').then(res1 => {
+        //         console.log('第一次的结果：', res1);  
+
+        //         return requestDate(res1 + '-kobe')
+        //     }).then(res2 => {
+        //         console.log('第二次的结果：', res2);  
+                
+        //         return requestDate(res2 + '-james')
+        //     }).then(res3 => {
+        //         console.log('第三次的结果：', res3);
+        //     })
+        // }
+
+
+        // 方式三：最终代码
+        function* getDate() {
+            const res1 = yield requestDate('bai')
+            console.log('res1：', res1);
+
+            const res2 = yield requestDate(res1 + '-kobe')
+            console.log('res2：', res2);
+
+            const res3 = yield requestDate(res2 + '-james')
+            console.log('res3：', res3);
+
+        }
+
+
+        const generator = getDate()
+        // console.log(generator.next());
+
+        generator.next().value.then(res1 => {
+            generator.next(res1).value.then(res2 => {
+                generator.next(res2).value.then(res3 => {
+                    generator.next(res3)
+                })
+            })
+        })
+
+
+        // 4. 使用 async 和 await
+        // async function getDate() {
+        //     const res1 = await requestDate('bai')
+        //     console.log('res1：', res1);
+
+        //     const res2 = await requestDate(res1 + '-kobe')
+        //     console.log('res2：', res2);
+
+        //     const res3 = await requestDate(res2 + '-james')
+        //     console.log('res3：', res3);
+        // }
+
+        // getDate()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            生成器函数：
+            1. function 后面会跟上符号: *
+            2. 代码的执行可以被 yield 控制
+            3. 生成器函数默认在执行时，返回一个生成器对象
+                * 要想执行函数内部的代码，需要生成器对象，调用它的 next 操作
+                * 当遇到 yield 时，就会中断执行
+        */
+       
+        // 1. 定义了一个生成器函数
+        function* foo(name1) {
+            console.log('第一次调用next方法：111', name1);
+            console.log('第一次调用next方法：222', name1);
+
+            // yield 可以跟着参数返回值
+            // yield 'aaa'
+
+            // 这个参数会作为上一个 yield语句的返回值
+            const name2 = yield 'aaa'
+            console.log('第二次调用next方法：333', name2);
+            console.log('第二次调用next方法：444', name2);
+
+            const name3 = yield 'bbb'
+            // return 'bbb'
+            console.log('第三次调用next方法：555', name3);
+            console.log('第三次调用next方法：666', name3);
+            yield 'ccc'
+
+            // 最后实际是 return 返回了 undefined，此时 done 才返回 true
+            // return undefined
+        }
+
+        // foo()
+
+
+        // 2. 调用生成器函数，返回一个 生成器对象
+        // const  generator = foo()
+
+        // 调用 next 方法
+        // console.log(generator.next());  // { done: false, value: 'aaa' }
+        // console.log(generator.next());  // { done: false, value: 'bbb' }
+        // console.log(generator.next());  // { done: false, value: 'ccc' }
+        // console.log(generator.next());  // { value: undefined, done: true}
+
+        // 3. 如果中途返回了 return，那么 返回参数会拿到，并且 done 变成 true，后续的任何 yield 都不会再执行
+        // console.log(generator.next());  // { done: false, value: 'aaa' }
+        // console.log(generator.next());  // { done: true, value: 'bbb' }
+        // console.log(generator.next());  // { done: true, value: undefined }
+        // console.log(generator.next());  // { done: true, value: undefined }
+
+        // 4. next 方法 传参
+
+        // 如果要给第一个next传参，直接在这里传就行
+        const generator = foo('next1')
+
+        console.log(generator.next());  
+        console.log(generator.next('next2'));  
+        console.log(generator.next('next3'));  
+        console.log(generator.next());  
+    </script>
+</body>
+</html>

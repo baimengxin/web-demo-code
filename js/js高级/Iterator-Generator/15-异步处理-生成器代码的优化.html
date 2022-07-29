@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function requestDate(url) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(url)
+                }, 1000)
+            })
+        }
+
+        function* getDate() {
+            const res1 = yield requestDate('bai')
+            console.log('res1：', res1);
+
+            const res2 = yield requestDate(res1 + '-kobe')
+            console.log('res2：', res2);
+
+            const res3 = yield requestDate(res2 + '-james')
+            console.log('res3：', res3);
+
+            const res4 = yield requestDate(res3 + '-aming')
+            console.log('res4：', res4);
+
+        }
+
+        // const generator = getDate()
+
+        // generator.next().value.then(res1 => {
+        //     generator.next(res1).value.then(res2 => {
+        //         generator.next(res2).value.then(res3 => {
+        //             generator.next(res3)
+        //         })
+        //     })
+        // })
+
+        // 利用递归优化代码
+        // 自动化执行生成器函数
+        function excuGenFn(genFn) {
+            // 1. 获取对应函数的 generator
+            const generator = genFn()
+
+            // 2. 定义一个递归函数
+            function exec(res) {
+                // result -> { done: true/false, value: 值/undefined }
+                const result = generator.next(res)
+                
+                if(result.done) return 
+
+                result.value.then(res => {
+                    exec(res)
+                })
+            }
+
+            // 3. 执行递归函数
+            exec()
+        }
+
+        excuGenFn(getDate)
+    </script>
+</body>
+</html>

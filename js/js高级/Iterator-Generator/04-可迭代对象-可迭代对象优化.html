@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实现一个可迭代对象
+        /*
+            1. 必须实现一个特定的函数：[Symbol.iterator]
+            2. 这个函数需要返回一个迭代器(这个迭代器用于迭代当前的对象)
+        */
+
+        // 1. 可迭代对象的优化 this指向
+        // const infos = {
+        //     friends: ['张三', '李四', '王五'],
+
+        //     [Symbol.iterator]: function () {
+        //         let index = 0
+        //         const infosIterator = {
+        //             next: () => {
+        //                 if (index < this.friends.length) {
+        //                     return { done: false, value: this.friends[index++] }
+        //                 } else {
+        //                     return { done: true, value: undefined }
+        //                 }
+        //             }
+        //         }
+
+        //         return infosIterator
+        //     }
+        // }
+
+        // 2. 迭代 infos 中的 key、value
+        const infos = {
+            name: 'bai',
+            age: 18,
+            height: 1.80,
+
+            [Symbol.iterator]: function() {
+                console.log(this);
+                // const keys = Object.keys(this)
+                // const value = Object.values(this)
+                const entrie = Object.entries(this)
+                let index = 0
+
+                const infosIterator = {
+                    next: () => {
+                        if (index < entrie.length) {
+                            return { done: false, value: entrie[index++] }
+                        } else {
+                            return { done: true, value: undefined }
+                        }
+                    }
+                }
+
+                return infosIterator
+            }
+        }
+
+        // 可迭代对象可以进行 for of 操作
+        for(const item of infos) {
+            // console.log(item);
+            const [ key, value ] = item
+            console.log(key, value);
+        }
+
+    </script>
+
+</body>
+
+</html>

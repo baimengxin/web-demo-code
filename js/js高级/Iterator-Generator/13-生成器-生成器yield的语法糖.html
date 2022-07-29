@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const names = ['张三', '李四', '王五']
+        const arrs = [11, 22, 33, 44, 55]
+
+        // 使用 yield* 来生产一个可迭代对象：
+        // 这个时候相当于是一种yield的语法糖，只不过会依次迭代这个可迭代对象，每次迭代其中的一个值
+        function* createArrayIterator(arr) {
+            // yield* 后面是需要 可迭代对象
+            yield* arr
+        }
+
+        const namesIterator = createArrayIterator(names)
+        // console.log(namesIterator.next());
+        // console.log(namesIterator.next());
+        // console.log(namesIterator.next());
+        // console.log(namesIterator.next());
+
+        // 使用类
+        class Person {
+            constructor(name, age, friends) {
+                this.name = name
+                this.age = age
+                this.friends = friends
+            }
+
+            *[Symbol.iterator]() {
+                // yield* this.friends
+                yield* Object.entries(this)
+            }
+        }
+
+        const p1 = new Person('张三', 18, ['abc', 'cba', 'nba'])
+        for(const key of p1) {
+            console.log(key);
+        }
+    </script>
+</body>
+</html>

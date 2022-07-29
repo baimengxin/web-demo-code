@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function* foo(name1) {
+            console.log('第一次调用next方法：111', name1);
+            console.log('第一次调用next方法：222', name1);
+
+            const name2 = yield 'aaa'
+
+            // 由于没有调用 next 方法，所以下面的打印不会执行 开始
+            console.log('第二次调用next方法：333', name2);
+            console.log('第二次调用next方法：444', name2);
+            // 由于没有调用 next 方法，所以下面的打印不会执行 结束
+
+
+            const name3 = yield 'bbb'
+            console.log('第三次调用next方法：555', name3);
+            console.log('第三次调用next方法：666', name3);
+            yield 'ccc'
+        }
+
+        const generator = foo('next1')
+        console.log(generator.next());
+        // console.log(generator.next('next2'));
+
+        // 1. 如果想要让生成器函数提前结束的话，可以直接调用 return 方法
+        // console.log(generator.return('next2')); // { value: 'next2', done: true }
+
+        // console.log('---------------------');
+        // console.log(generator.next('next3'));   // { value: undefined, done: true }
+        // console.log(generator.next('next4'));   // { value: undefined, done: true }
+
+        // 2. 通过抛出异常来提前结束
+        console.log(generator.throw(new Error('error throw next2'))); // Uncaught Error: error throw next2
+
+        // 这里的代码不会执行
+        console.log('---------------------');
+        console.log(generator.next('next3'));   // { value: undefined, done: true }
+        console.log(generator.next('next4'));   // { value: undefined, done: true }
+
+    </script>
+</body>
+</html>
